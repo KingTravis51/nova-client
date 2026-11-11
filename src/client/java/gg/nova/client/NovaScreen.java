@@ -16,8 +16,11 @@ public final class NovaScreen extends Screen {
     private NovaModule.Category selected = NovaModule.Category.PVP;
     private int left, top, panelWidth, panelHeight, contentX, contentWidth, cardWidth;
 
-    public NovaScreen() {
+    public NovaScreen() { this(NovaModule.Category.PVP); }
+
+    public NovaScreen(NovaModule.Category initialCategory) {
         super(Component.literal("Nova Client"));
+        this.selected = initialCategory == null ? NovaModule.Category.PVP : initialCategory;
     }
 
     private void layout() {

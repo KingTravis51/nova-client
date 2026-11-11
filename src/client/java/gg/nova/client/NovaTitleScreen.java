@@ -189,7 +189,7 @@ public final class NovaTitleScreen extends Screen {
         int heroH = Math.min(230, panelH / 2);
         int actionY = heroY + heroH - 52;
         if (inside(mx, my, mainX + 25, actionY, 150, 34)) {
-            Minecraft.getInstance().setScreen(new NovaScreen());
+            Minecraft.getInstance().setScreen(new NovaScreen(NovaModule.Category.PVP));
             return true;
         }
         if (inside(mx, my, mainX + 186, actionY, 130, 34)) {
@@ -197,7 +197,7 @@ public final class NovaTitleScreen extends Screen {
             return true;
         }
         if (inside(mx, my, mainX + 327, actionY, 120, 34)) {
-            Minecraft.getInstance().setScreen(new NovaScreen());
+            Minecraft.getInstance().setScreen(new NovaScreen(NovaModule.Category.VISUALS));
             return true;
         }
         return super.mouseClicked(event, doubleClick);
@@ -207,14 +207,16 @@ public final class NovaTitleScreen extends Screen {
         Minecraft mc = Minecraft.getInstance();
         switch (i) {
             case 0 -> { }
-            case 1, 2, 3 -> mc.setScreen(new NovaScreen());
+            case 1 -> mc.setScreen(new NovaScreen(NovaModule.Category.PVP));
+            case 2 -> mc.setScreen(new NovaScreen(NovaModule.Category.VISUALS));
+            case 3 -> mc.setScreen(new NovaScreen(NovaModule.Category.COSMETICS));
             case 4 -> mc.setScreen(new OptionsScreen(this, mc.options));
             default -> { }
         }
     }
 
     private void selectedCosmetics() {
-        Minecraft.getInstance().setScreen(new NovaScreen());
+        Minecraft.getInstance().setScreen(new NovaScreen(NovaModule.Category.COSMETICS));
     }
 
     @Override
