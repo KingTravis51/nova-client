@@ -2,14 +2,14 @@ package gg.nova.client;
 
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public final class NovaHud {
     private NovaHud() {}
 
     public static void register() {
         HudElementRegistry.addLast(
-            ResourceLocation.fromNamespaceAndPath("nova", "client_hud"),
+            Identifier.fromNamespaceAndPath("nova", "client_hud"),
             NovaHud::render
         );
     }
