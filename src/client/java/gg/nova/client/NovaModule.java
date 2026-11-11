@@ -1,11 +1,8 @@
 package gg.nova.client;
 
 public final class NovaModule {
-
     public enum Category {
-        PVP,
-        HUD,
-        UTILITY
+        PVP, PERFORMANCE, HUD, VISUALS, COSMETICS, UTILITY
     }
 
     private final String name;
@@ -17,30 +14,12 @@ public final class NovaModule {
         this.name = name;
         this.description = description;
         this.category = category;
-        this.enabled = false;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public void toggle() {
-        enabled = !enabled;
-    }
+    public String getName() { return name; }
+    public String getDescription() { return description; }
+    public Category getCategory() { return category; }
+    public boolean isEnabled() { return enabled; }
+    public void setEnabled(boolean enabled) { this.enabled = enabled; }
+    public void toggle() { enabled = !enabled; }
 }
