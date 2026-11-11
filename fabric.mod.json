@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "nova",
+  "version": "${version}",
+  "name": "Nova",
+  "description": "A custom Minecraft PvP and performance client.",
+  "authors": ["Nova"],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "gg.nova.client.NovaClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.20.1",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
