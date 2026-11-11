@@ -66,6 +66,13 @@ public final class NovaTitleScreen extends Screen {
 
     private void renderBackdrop(GuiGraphics graphics) {
         graphics.fill(0, 0, width, height, NAVY);
+        // Subtle technical grid gives the menu depth without competing with controls.
+        for (int x = 0; x < width; x += 48) {
+            graphics.fill(x, 0, x + 1, height, 0x142F6AA0);
+        }
+        for (int y = 0; y < height; y += 48) {
+            graphics.fill(0, y, width, y + 1, 0x142F6AA0);
+        }
 
         // Layered vertical colour bands create a subtle blue-to-purple atmosphere.
         for (int i = 0; i < 36; i++) {
@@ -83,8 +90,10 @@ public final class NovaTitleScreen extends Screen {
         drawCrystal(graphics, width - 300, height - 150, 48, 0x339B7CFF);
         drawCrystal(graphics, Math.max(35, width / 2 - 20), 72, 34, 0x3373E5FF);
 
-        graphics.fill(0, height - 2, width, height, 0xFF172C49);
-        graphics.fill(0, height - 2, width / 3, height, BLUE);
+        // Soft horizon glow and crisp Nova accent line.
+        graphics.fill(0, height - 3, width, height, 0xFF172C49);
+        graphics.fill(0, height - 3, width / 3, height, BLUE);
+        graphics.fill(width / 3, height - 3, width / 2, height, PURPLE);
     }
 
     private void drawCrystal(GuiGraphics graphics, int x, int y, int size, int color) {
@@ -99,6 +108,7 @@ public final class NovaTitleScreen extends Screen {
     private void renderBrand(GuiGraphics graphics) {
         int brandY = Math.max(42, height / 5);
         graphics.fill(buttonX, brandY - 12, buttonX + 4, brandY + 49, BLUE);
+        graphics.fill(buttonX + 7, brandY - 12, buttonX + 8, brandY + 49, 0x669B7CFF);
         graphics.drawString(font, "N O V A", buttonX + 18, brandY - 8, CYAN);
         graphics.drawString(font, "MINECRAFT CLIENT", buttonX + 19, brandY + 12, MUTED);
         graphics.drawString(font, "Make your world yours.", buttonX + 19, brandY + 35, 0xFFE4EEFA);
@@ -111,8 +121,10 @@ public final class NovaTitleScreen extends Screen {
             int y = buttonY + i * (buttonHeight + buttonGap);
             boolean hovered = inside(mouseX, mouseY, buttonX, y, buttonWidth, buttonHeight);
             int background = hovered ? PANEL_HOVER : PANEL;
+            graphics.fill(buttonX - 1, y - 1, buttonX + buttonWidth + 1, y + buttonHeight + 1,
+                hovered ? CYAN : 0xFF263D5C);
             graphics.fill(buttonX, y, buttonX + buttonWidth, y + buttonHeight, background);
-            graphics.fill(buttonX, y, buttonX + 3, y + buttonHeight, i == 2 ? PURPLE : BLUE);
+            graphics.fill(buttonX, y, buttonX + 3, y + buttonHeight, i == 2 || i == 3 ? PURPLE : BLUE);
             graphics.fill(buttonX + 3, y, buttonX + buttonWidth, y + 1, hovered ? CYAN : 0x5539B8FF);
             graphics.drawString(font, labels[i], buttonX + 18, y + 14, hovered ? CYAN : 0xFFEAF3FF);
             graphics.drawString(font, "›", buttonX + buttonWidth - 20, y + 11, hovered ? CYAN : MUTED);
@@ -121,10 +133,12 @@ public final class NovaTitleScreen extends Screen {
 
     private void renderQuickPlay(GuiGraphics graphics, int mouseX, int mouseY) {
         boolean hovered = inside(mouseX, mouseY, quickX, quickY + 105, quickWidth, 42);
+        graphics.fill(quickX - 1, quickY - 1, quickX + quickWidth + 1, quickY + quickHeight + 1,
+            hovered ? CYAN : 0xFF263D5C);
         graphics.fill(quickX, quickY, quickX + quickWidth, quickY + quickHeight, PANEL);
         graphics.fill(quickX, quickY, quickX + quickWidth, quickY + 2, PURPLE);
-        graphics.drawString(font, "QUICK PLAY", quickX + 18, quickY + 17, CYAN);
-        graphics.drawString(font, "DONUT SMP", quickX + 18, quickY + 48, 0xFFFFFFFF);
+        graphics.drawString(font, "FEATURED SERVER", quickX + 18, quickY + 17, PURPLE);
+        graphics.drawString(font, "DONUT SMP", quickX + 18, quickY + 48, CYAN);
         graphics.drawString(font, "Jump back into your favourite server.", quickX + 18, quickY + 66, MUTED);
         graphics.fill(quickX + 16, quickY + 91, quickX + quickWidth - 16, quickY + 92, 0x5539B8FF);
         graphics.fill(quickX + 16, quickY + 105, quickX + quickWidth - 16, quickY + 147,
