@@ -14,13 +14,13 @@ import net.minecraft.network.chat.Component;
  * All menu geometry is calculated from the current window size.
  */
 public final class NovaTitleScreen extends Screen {
-    private static final int NAVY = 0xFF071225;
-    private static final int PANEL = 0xE9102039;
-    private static final int PANEL_HOVER = 0xF01A3152;
-    private static final int BLUE = 0xFF39B8FF;
-    private static final int CYAN = 0xFF73E5FF;
-    private static final int PURPLE = 0xFF9B7CFF;
-    private static final int MUTED = 0xFF9AAFC8;
+    private static final int NAVY = NovaTheme.NAVY;
+    private static final int PANEL = NovaTheme.PANEL;
+    private static final int PANEL_HOVER = NovaTheme.HOVER;
+    private static final int BLUE = NovaTheme.BLUE;
+    private static final int CYAN = NovaTheme.CYAN;
+    private static final int PURPLE = NovaTheme.PURPLE;
+    private static final int MUTED = NovaTheme.MUTED;
 
     private int buttonX;
     private int buttonY;

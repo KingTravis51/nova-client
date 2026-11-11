@@ -13,14 +13,14 @@ public final class NovaScreen extends Screen {
     private static final int PANEL_WIDTH = 740;
     private static final int PANEL_HEIGHT = 440;
 
-    private final int navy = 0xFF091326;
-    private final int sidebar = 0xFF0D192D;
-    private final int card = 0xFF142641;
-    private final int hover = 0xFF20385B;
-    private final int blue = 0xFF35AFFF;
-    private final int cyan = 0xFF65DFFF;
-    private final int purple = 0xFF9B7CFF;
-    private final int muted = 0xFF91A6C0;
+    private final int navy = NovaTheme.NAVY;
+    private final int sidebar = NovaTheme.SIDEBAR;
+    private final int card = NovaTheme.CARD;
+    private final int hover = NovaTheme.HOVER;
+    private final int blue = NovaTheme.BLUE;
+    private final int cyan = NovaTheme.CYAN;
+    private final int purple = NovaTheme.PURPLE;
+    private final int muted = NovaTheme.MUTED;
 
     private NovaModule.Category selected = NovaModule.Category.PVP;
     private int left;
@@ -34,7 +34,7 @@ public final class NovaScreen extends Screen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
         left = Math.max(10, (width - PANEL_WIDTH) / 2);
         top = Math.max(10, (height - PANEL_HEIGHT) / 2);
-        graphics.fill(0, 0, width, height, 0xC9000816);
+        graphics.fill(0, 0, width, height, NovaTheme.BACKDROP);
         graphics.fill(left, top, left + PANEL_WIDTH, top + PANEL_HEIGHT, navy);
         graphics.fill(left, top, left + PANEL_WIDTH, top + 3, blue);
         renderSidebar(graphics);
@@ -47,7 +47,7 @@ public final class NovaScreen extends Screen {
     private void renderSidebar(GuiGraphics graphics) {
         graphics.fill(left, top + 3, left + 174, top + PANEL_HEIGHT, sidebar);
         graphics.drawString(font, "NOVA", left + 22, top + 22, cyan);
-        graphics.drawString(font, "CLIENT 1.1.0", left + 22, top + 43, muted);
+        graphics.drawString(font, "CLIENT 1.1.1", left + 22, top + 43, muted);
         graphics.drawString(font, "WORKSPACE", left + 20, top + 90, 0xFF637C9C);
 
         int y = top + 112;
@@ -61,14 +61,14 @@ public final class NovaScreen extends Screen {
         }
 
         graphics.drawString(font, "ADVANCED EDITION", left + 20, top + 385, purple);
-        graphics.drawString(font, "NOVA 1.1.0", left + 20, top + 411, muted);
+        graphics.drawString(font, "NOVA 1.1.1", left + 20, top + 411, muted);
     }
 
     private void renderHeader(GuiGraphics graphics) {
         graphics.drawString(font, selected.name() + " MODULES", left + 194, top + 24, 0xFFFFFFFF);
         graphics.drawString(font, "Customise your Minecraft experience", left + 194, top + 44, muted);
         graphics.drawString(font, "RIGHT SHIFT TO CLOSE", left + 545, top + 27, muted);
-        graphics.fill(left + 190, top + 69, left + 710, top + 70, 0xFF263D5C);
+        graphics.fill(left + 190, top + 69, left + 710, top + 70, NovaTheme.DIVIDER);
     }
 
     private void renderModuleCards(GuiGraphics graphics, int mouseX, int mouseY) {
@@ -93,7 +93,7 @@ public final class NovaScreen extends Screen {
             graphics.fill(x, y, x + 3, y + cardHeight, module.isEnabled() ? purple : blue);
             graphics.drawString(font, module.getName(), x + 12, y + 12, 0xFFFFFFFF);
             graphics.drawString(font, module.getDescription(), x + 12, y + 31, muted);
-            int toggleColor = module.isEnabled() ? 0xFF176D9B : 0xFF35435A;
+            int toggleColor = module.isEnabled() ? NovaTheme.TOGGLE_ON : NovaTheme.TOGGLE_OFF;
             graphics.fill(x + 189, y + 18, x + 239, y + 43, toggleColor);
             graphics.drawCenteredString(font, module.isEnabled() ? "ON" : "OFF",
                 x + 214, y + 26, 0xFFFFFFFF);
