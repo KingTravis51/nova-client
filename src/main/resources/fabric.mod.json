@@ -11,6 +11,9 @@
       "gg.nova.client.NovaClient"
     ]
   },
+  "mixins": [
+    "nova.client.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.20.1",
     "minecraft": "1.21.11",
