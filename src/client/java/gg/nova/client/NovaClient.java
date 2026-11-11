@@ -14,6 +14,7 @@ public final class NovaClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModuleManager.registerDefaults();
         NovaConfig.load();
+        NovaHud.register();
 
         openNova = KeyBindingHelper.registerKeyBinding(
             new KeyMapping("key.nova.open", InputConstants.Type.KEYSYM,
